@@ -1,13 +1,16 @@
-name: CI Tests
+name: My workfow
 
 # Déclenchement automatique à chaque push sur la branche "main"
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
+    workflow_dispatch: {}
+    schedule: 
+      - cron: '0 0 * * *'
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest  # ou windows-latest, macos-latest
+    runs-on: windows-latest  # ou windows-latest, macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
