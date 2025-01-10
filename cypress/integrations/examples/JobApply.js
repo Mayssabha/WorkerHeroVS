@@ -20,7 +20,7 @@ describe('Job Apply', function () {
         cy.get('wh-ap-job-item').eq(0).invoke('text').as('JobTitle');
         cy.get('wh-ap-job-item').eq(0).contains('View details').click();
         cy.wait(2000);
-        cy.contains('Job description').should('be.visible');
+        cy.contains('canvas').should('be.visible');
         cy.get('.wh-header-md').invoke('text').should('eq',this.JobTitle);
         
         cy.contains('Apply').click();

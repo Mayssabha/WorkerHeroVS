@@ -7,7 +7,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: 'https://app.staging.v2.workerhero.com',
-    specPattern: 'cypress/integrations/**/*.js';
+    specPattern: 'cypress/integrations/**/*.js',
     retries: {
       // How many times to retry a failing test in 'cypress run'
       runMode: 2,

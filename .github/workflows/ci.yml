@@ -25,3 +25,18 @@ jobs:
 
       - name: Run tests
         run: npm test  # ou npx cypress run, jest, etc.
+
+
+      # 1) Upload videos as an artifact
+      - name: Upload Cypress Videos
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-videos
+        path: cypress/videos
+
+    # 2) Upload screenshots as an artifact
+    - name: Upload Cypress Screenshots
+      uses: actions/upload-artifact@v3
+      with:
+        name: cypress-screenshots
+        path: cypress/screenshots
