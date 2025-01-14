@@ -18,7 +18,7 @@ module.exports = defineConfig({
   // Active l'enregistrement vidéo
   videoCompression: 32, // Compression de la vidéo (facultatif)
   videoUploadOnPasses: false, // Évite d'uploader les vidéos de tests réussis
-  
+  screenshotOnRunFailure: true,
   defaultCommandTimeout: 6000,
 });/// <reference types='Cypress' />
 
