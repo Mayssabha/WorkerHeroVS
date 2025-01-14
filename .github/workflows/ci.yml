@@ -1,12 +1,12 @@
-name: My workfow
+name: My workflow
 
 # Déclenchement automatique à chaque push sur la branche "main"
 on:
   push:
     branches: [ "master" ]
-    workflow_dispatch: {}
-    schedule: 
-      - cron: '0 0 23 * * *'  # Executes at midnight Tunis Time (UTC+1)
+  workflow_dispatch: {}
+  schedule: 
+      - cron: '0 23 * * *'  # Executes at midnight Tunis Time (UTC+1)
 
 jobs:
   run-tests:
@@ -29,14 +29,16 @@ jobs:
 
       # 1) Upload videos as an artifact
       - name: Upload Cypress Videos
-      uses: actions/upload-artifact@v3
-      with:
-        name: cypress-videos
-        path: cypress/videos
+        uses: actions/upload-artifact@v3
+        with:
+          name: cypress-videos
+          path: cypress/videos
 
       # 2) Upload screenshots as an artifact
       - name: Upload Cypress Screenshots
-      uses: actions/upload-artifact@v3
-      with:
+        uses: actions/upload-artifact@v3
+        with:
           name: cypress-screenshots
           path: cypress/screenshots
+
+     
