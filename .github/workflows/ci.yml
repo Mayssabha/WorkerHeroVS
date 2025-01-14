@@ -6,7 +6,7 @@ on:
     branches: [ "master" ]
     workflow_dispatch: {}
     schedule: 
-      - cron: '0 0 * * *'
+      - cron: '0 0 23 * * *'  # Executes at midnight Tunis Time (UTC+1)
 
 jobs:
   run-tests:

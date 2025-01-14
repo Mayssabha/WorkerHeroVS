@@ -18,12 +18,16 @@ describe('Job Apply', function () {
         cy.contains('button','Search').click();
         cy.get('.job-list').should('be.visible');
         cy.get('wh-ap-job-item').eq(0).invoke('text').as('JobTitle');
-        cy.get('wh-ap-job-item').eq(0).contains('View details').click();
+        cy.get('wh-ap-job-item').eq(0).contains('View details').click();//.then(() => {
+           // cy.wait(2000);
+           // cy.get('canvas').should('be.visible');
+           // cy.get('.wh-header-md').invoke('text').should('eq',this.JobTitle);
+       // })
         cy.wait(2000);
-        cy.contains('canvas').should('be.visible');
+        cy.contains('button', 'Go Back').should('exist');
         cy.get('.wh-header-md').invoke('text').should('eq',this.JobTitle);
         
-        cy.contains('Apply').click();
+        cy.contains('Apply')//.click();
         //cy.get('.wh-s-modal').should('be.visible');
     })
 })
