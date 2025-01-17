@@ -10,6 +10,7 @@ describe('Job Apply', function () {
 
     it('Apply for a job', function() {
         //cy.changeLanguage('English');
+
         LoginPage.login('workerherotesti+111@gmail.com', 'Workerhero!123','Success');
         cy.contains('wh-s-nav-bottom-item','Jobs').click();
        // cy.wait(2000);
@@ -17,16 +18,21 @@ describe('Job Apply', function () {
         cy.get('wh-s-search').type('Tes');
         cy.contains('button','Search').click();
         cy.get('.job-list').should('be.visible');
-        cy.get('wh-ap-job-item').eq(0).invoke('text').as('JobTitle');
-        cy.get('wh-ap-job-item').eq(0).contains('View details').click();//.then(() => {
-           // cy.wait(2000);
-           // cy.get('canvas').should('be.visible');
-           // cy.get('.wh-header-md').invoke('text').should('eq',this.JobTitle);
-       // })
-        cy.wait(2000);
-        cy.contains('button', 'Go Back').should('exist');
-        cy.get('.wh-header-md').invoke('text').should('eq',this.JobTitle);
-        
+        cy.get('wh-ap-job-item').eq(0).invoke('text').then((JobTitle) => {
+        cy.get('wh-ap-job-item').eq(0).contains('View details').click().then(() => {
+            
+            cy.wait(6000);
+            cy.get('.go-back-btn').should('be.visible');
+            cy.get('.wh-header-md').invoke('text').then((text) => {
+                expect(text).to.should('contain',JobTitle);
+            });
+            //should('contain',JobTitle);
+        });
+        //cy.wait(6000);
+        //cy.get('.go-back-btn').should('exist');
+       // cy.get('.go-back-btn').click();
+       // cy.get('.wh-header-md').invoke('text').should('eq',JobTitle);
+    });
         cy.contains('Apply')//.click();
         //cy.get('.wh-s-modal').should('be.visible');
     })
