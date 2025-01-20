@@ -1,49 +1,54 @@
 name: My workflow
 
-# Déclenchement automatique à chaque push sur la branche "main"
 on:
   push:
     branches: [ "master" ]
   workflow_dispatch: {}
   schedule: 
-      - cron: '0 23 * * *'  # Executes at midnight Tunis Time (UTC+1)
+    - cron: '0 22 * * *'  # Executes at midnight Tunis Time (UTC+1)
 
 jobs:
   run-tests:
-    runs-on: windows-latest  # ou windows-latest, macos-latest
+    runs-on: windows-latest
     steps:
+      # Checkout code
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Node
+      # Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
+      # Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
-        run: npx cypress run  # ou npx cypress run, jest, etc.
+      # Run Cypress tests
+      - name: Run Cypress Tests
+        run: npx cypress run
         env:
-          CYPRESS_VIDEO: true  # Capture video of the test run
-          CYPRESS_SCREENSHOTS: true  # Capture screenshots on failure
+          # Ensure Cypress generates video
+          CYPRESS_VIDEO: true
+          CYPRESS_SCREENSHOT_ON_RUN_FAILURE: true
 
+      # Debug: Check where Cypress saves videos
+      - name: List Cypress Video Files
+        run: dir cypress\videos /s
 
-      # 1) Upload videos as an artifact
+      # Upload Cypress Videos
       - name: Upload Cypress Videos
         uses: actions/upload-artifact@v3
         with:
           name: cypress-videos
-          path: cypress/videos
+          path: cypress/videos/**/*.mp4
           if-no-files-found: warn
 
-      # 2) Upload screenshots as an artifact
+      # Upload Cypress Screenshots
       - name: Upload Cypress Screenshots
         uses: actions/upload-artifact@v3
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: cypress/screenshots/**/*.png
           if-no-files-found: warn
-
-     
