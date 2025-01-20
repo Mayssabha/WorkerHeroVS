@@ -26,8 +26,8 @@ jobs:
       - name: Run tests
         run: npx cypress run  # ou npx cypress run, jest, etc.
         env:
-          CYPRESS_VIDEO: 1  # Capture video of the test run
-          CYPRESS_SCREENSHOTS: 1  # Capture screenshots on failure
+          CYPRESS_VIDEO: true  # Capture video of the test run
+          CYPRESS_SCREENSHOTS: true  # Capture screenshots on failure
 
 
       # 1) Upload videos as an artifact
