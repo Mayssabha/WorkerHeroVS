@@ -170,5 +170,8 @@
     "wrappy": "^1.0.2",
     "yauzl": "^2.10.0"
   },
-  "description": ""
-}
+  "description": "",
+  
+    "video": true,
+    "screenshotOnRunFailure": true
+  }
