@@ -27,19 +27,22 @@ jobs:
 
       # Run Cypress tests
       - name: Run Cypress Tests
-        run: npx cypress run
-        env:
+        run: npx cypress run --browser electron
+        #env:
           # Ensure Cypress generates video
-          CYPRESS_VIDEO: true
-          CYPRESS_SCREENSHOT_ON_RUN_FAILURE: true
+         # CYPRESS_VIDEO: true
+          #CYPRESS_SCREENSHOT_ON_RUN_FAILURE: true
 
       # Debug: Check where Cypress saves videos
       - name: List Cypress Video Files
-        run: dir cypress\videos /s
+        run:  |
+          echo "Checking if videos and screenshots directories exist..."
+          dir cypress\videos
+          dir cypress\screenshots
 
       # Upload Cypress Videos
       - name: Upload Cypress Videos
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-videos
           path: cypress/videos/**/*.mp4
