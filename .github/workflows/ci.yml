@@ -46,7 +46,7 @@ jobs:
         with:
           name: cypress-videos
           path: cypress/videos/**/*.mp4
-          if-no-files-found: warn
+          if-no-files-found: ignore
 
       # Upload Cypress Screenshots
       - name: Upload Cypress Screenshots
@@ -54,4 +54,4 @@ jobs:
         with:
           name: cypress-screenshots
           path: cypress/screenshots/**/*.png
-          if-no-files-found: warn
+          if-no-files-found: ignore
