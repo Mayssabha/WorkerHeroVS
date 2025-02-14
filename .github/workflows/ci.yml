@@ -27,11 +27,11 @@ jobs:
 
       # Run Cypress tests
       - name: Run Cypress Tests
-        run: npx cypress run --browser electron || true
-        #env:
+        run: npx cypress run --browser electron --record || true
+        env:
           # Ensure Cypress generates video
-         # CYPRESS_VIDEO: true
-          #CYPRESS_SCREENSHOT_ON_RUN_FAILURE: true
+          CYPRESS_VIDEO: true
+          CYPRESS_SCREENSHOT_ON_RUN_FAILURE: true
 
       # Debug: Check where Cypress saves videos
       - name: List Cypress Video Files
