@@ -50,7 +50,7 @@ jobs:
 
       # Upload Cypress Screenshots
       - name: Upload Cypress Screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: cypress-screenshots
           path: cypress/screenshots/**/*.png
