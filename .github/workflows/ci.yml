@@ -27,7 +27,7 @@ jobs:
 
       # Run Cypress tests
       - name: Run Cypress Tests
-        run: npx cypress run --browser electron --record || true
+        run: npx cypress run --browser electron || true
         env:
           # Ensure Cypress generates video
           CYPRESS_VIDEO: true
